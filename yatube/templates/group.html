@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Записи сообщества {{group.title}} {% endblock %}
+
+{% block group_name %} <h1>{{group.title}}</h1> {% endblock group_name%}
+{% block group_description %} {{group.description}} {% endblock group_description%}
+
+{% block content %}
+
+  {% for post in posts %}
+  <h3>
+  Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}
+  </h3>
+  <p>{{ post.text|linebreaksbr }}</p>
+  <hr>
+  {% endfor %}
+
+{% endblock %}
